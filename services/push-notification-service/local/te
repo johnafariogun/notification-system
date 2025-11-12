@@ -1,0 +1,12 @@
+curl -X 'POST' \
+  'http://54.221.180.96/api/notifications/send-immediate' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "title": "This is a test notification",
+  "body": "Get up and dance",
+  "token":"ebHFiXdjO0wwPxdU53xW-p:APA91bFoCXCi9OWOAxjOL_TgGIYSZbta4achPUSaZpCO77GtDPZzE3UezwTxdAKULAsouBs8jwzT9PkaM1EN3x5fnkOi8HXUh8HZLu43hzSkcPZpkT-DJmM",
+  "notification_type": "web",
+  "link": "http://54.221.180.96/docs",
+  "image":"https://cdn-icons-png.freepik.com/512/1827/1827301.png"
+}'

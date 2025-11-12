@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Environment
+.env
+*.env
+
+# Firebase credentials
+*.json
+!init.sql
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+log
+# Logs
+logs/*.log
+firebase-credentials.json
+mindful-torus-458106-p9-firebase-adminsdk-*.json
