@@ -1,6 +1,6 @@
 import pytest
 
-from app.main import CircuitBreaker
+from app.push import CircuitBreaker
 from datetime import timedelta
 
 
@@ -27,8 +27,8 @@ def test_circuit_breaker_recovers_after_timeout(monkeypatch):
 
     assert breaker.state == "OPEN"
 
-    # Fast-forward time by manipulating last_failure_time
-    breaker.last_failure_time -= timedelta(seconds=breaker.timeout + 0.1)
+    if breaker.last_failure_time is not None:
+        breaker.last_failure_time = breaker.last_failure_time - timedelta(seconds=breaker.timeout + 0.1)
 
     result = breaker.call(lambda: "ok")
 
