@@ -38,6 +38,8 @@ class DatabaseManager:
         logger.info("Connected to PostgreSQL successfully")
 
     async def create_notification(self, notification_data: Dict[str, Any]) -> Notification:
+        if self.async_session is None:
+            raise RuntimeError("DatabaseManager not connected. Call connect() first.")
         async with self.async_session() as session:
             notification = Notification(
                 idempotency_key=notification_data.get("idempotency_key"),
@@ -56,7 +58,6 @@ class DatabaseManager:
             await session.commit()
             await session.refresh(notification)
             return notification
-
     async def get_notification_by_id(self, notification_id: str) -> Optional[Notification]:
         async with self.async_session() as session:
             result = await session.execute(
